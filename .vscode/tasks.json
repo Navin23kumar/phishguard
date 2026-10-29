@@ -1,0 +1,132 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "1. Build Project (GCC)",
+            "command": "gcc",
+            "args": [
+                "-Wall",
+                "-Wextra",
+                "-std=c99",
+                "-Iinclude",
+                "-Dstrncasecmp=_strnicmp",
+                "-Dstrcasecmp=_stricmp",
+                "src/main.c",
+                "src/email_parser.c",
+                "src/phish_engine.c",
+                "src/reporter.c",
+                "src/utils.c",
+                "-o",
+                "${workspaceFolder}/phishguard.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "2. Run Menu Runner (All In One)",
+            "command": "${workspaceFolder}/run.bat",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new",
+                "focus": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "3. Scan PayPal Phishing Email",
+            "command": "${workspaceFolder}/phishguard.exe",
+            "args": [
+                "samples/phishing_paypal.eml",
+                "--json",
+                "report.json",
+                "--html",
+                "quarantine.html"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": "1. Build Project (GCC)",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "4. Scan Office 365 Phishing Email",
+            "command": "${workspaceFolder}/phishguard.exe",
+            "args": [
+                "samples/phishing_office365.eml",
+                "--json",
+                "report.json",
+                "--html",
+                "quarantine.html"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": "1. Build Project (GCC)",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "5. Scan Legitimate GitHub Email",
+            "command": "${workspaceFolder}/phishguard.exe",
+            "args": [
+                "samples/legitimate_github.eml"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": "1. Build Project (GCC)",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "6. Run Interactive Live Assessment",
+            "command": "${workspaceFolder}/phishguard.exe",
+            "args": [
+                "--interactive"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": "1. Build Project (GCC)",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            }
+        }
+    ]
+}

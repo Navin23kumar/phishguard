@@ -1,0 +1,55 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch PhishGuard (PayPal Sample)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/phishguard.exe",
+            "args": [
+                "samples/phishing_paypal.eml",
+                "--html",
+                "quarantine.html",
+                "--json",
+                "report.json"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Build PhishGuard (GCC)"
+        },
+        {
+            "name": "(gdb) Launch PhishGuard (Interactive)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/phishguard.exe",
+            "args": [
+                "--interactive"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Build PhishGuard (GCC)"
+        }
+    ]
+}

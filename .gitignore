@@ -1,0 +1,4 @@
+*.exe
+report.json
+quarantine.html
+__pycache__/

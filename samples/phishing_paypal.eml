@@ -1,0 +1,21 @@
+From: "PayPal Account Security" <support@paypa1-security.xyz>
+Reply-To: harvest-data@attacker-server.com
+Return-Path: <bounce@paypa1-security.xyz>
+Subject: URGENT: Your account suspended due to unauthorized access
+Date: Wed, 28 Oct 2026 14:22:10 +0000
+Authentication-Results: mx.google.com; spf=fail smtp.mailfrom=paypa1-security.xyz; dkim=fail; dmarc=fail
+
+Dear Valued Customer,
+
+We have detected unauthorized access attempts on your PayPal wallet.
+For your safety, your account has been temporarily restricted.
+
+Immediate action is required! Failure to do so will result in permanent closure of your assets within 24 hours.
+
+Kindly update and verify your account details by clicking the link below:
+http://192.168.1.105/paypal/login-verification.php
+
+You must confirm your identity and verify your credit card number to restore complete service.
+
+Sincerely,
+PayPal Security & Fraud Protection Team

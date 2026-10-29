@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PhishGuard - Seminar Slides Presentation (APEX CIPHER)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+  body { background: #090d16; color: #f8fafc; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; overflow-x: hidden; }
+  
+  .slide-container {
+    width: 90vw;
+    max-width: 1200px;
+    height: 70vh;
+    min-height: 600px;
+    background: #0f172a;
+    border: 2px solid #2563eb;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    display: none;
+    flex-direction: column;
+    position: relative;
+    padding: 36px 48px;
+    overflow-y: auto;
+  }
+  .slide-container.active { display: flex; }
+
+  /* Header inside slide */
+  .slide-badge { color: #38bdf8; font-size: 13px; font-weight: bold; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+  .slide-title { font-size: 26px; font-weight: 800; color: #ffffff; margin-bottom: 20px; border-bottom: 1px solid #334155; padding-bottom: 12px; }
+  
+  /* Slide 1 Cover */
+  .cover-card { text-align: center; margin: auto; }
+  .cover-main-title { font-size: 34px; font-weight: 800; color: #ffffff; line-height: 1.3; margin: 16px 0; }
+  .cover-sub { font-size: 16px; color: #94a3b8; margin-bottom: 28px; }
+  .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 15px; text-align: left; }
+  .meta-box { background: #1e293b; border: 1px solid #334155; padding: 14px 18px; border-radius: 10px; }
+  .meta-box span { font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 700; display: block; margin-bottom: 4px; }
+  .meta-box strong { font-size: 14px; color: #38bdf8; }
+
+  /* Content split layouts */
+  .two-col { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: center; }
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .col-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 20px; }
+  .col-card h3 { font-size: 16px; margin-bottom: 10px; }
+  .col-card p, .col-card li { font-size: 13px; color: #cbd5e1; line-height: 1.6; margin-bottom: 6px; }
+
+  /* Paper survey list */
+  .paper-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .paper-box { background: #1e293b; border-left: 4px solid #38bdf8; padding: 12px 16px; border-radius: 6px; font-size: 12.5px; }
+  .paper-box.base { border-left-color: #22c55e; background: #13271d; }
+  .paper-box strong { color: #f8fafc; }
+  .paper-box .lim { color: #fca5a5; margin-top: 4px; }
+
+  /* Code box */
+  pre { background: #090d16; border: 1px solid #334155; color: #38bdf8; padding: 16px; border-radius: 8px; font-family: 'Consolas', monospace; font-size: 12px; line-height: 1.5; overflow-x: auto; }
+
+  /* Controls */
+  .nav-bar { display: flex; align-items: center; gap: 20px; margin-top: 24px; }
+  .nav-btn { background: #2563eb; color: white; border: none; padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+  .nav-btn:hover { background: #1d4ed8; }
+  .nav-btn:disabled { background: #334155; cursor: not-allowed; }
+  .page-num { font-size: 14px; color: #94a3b8; font-weight: 600; }
+  .fullscreen-tip { font-size: 12px; color: #64748b; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+  <!-- SLIDE 1: TITLE SLIDE -->
+  <div class="slide-container active" id="slide-1">
+    <div class="cover-card">
+      <div class="slide-badge">CYBER SECURITY TECHNICAL CLUB SEMINAR</div>
+      <div class="cover-main-title">Phishing Detection Tool:<br><span style="color:#38bdf8;">Identifying and Preventing Fake Email</span></div>
+      <div class="cover-sub">A Rule-Based Threat Assessment Engine in C Programming</div>
+      <div class="meta-grid">
+        <div class="meta-box"><span>Team Name</span><strong>APEX CIPHER</strong></div>
+        <div class="meta-box"><span>Department</span><strong>Computer Science & Engg (CSE)</strong></div>
+        <div class="meta-box"><span>Academic Year</span><strong>1st Year B.Tech (2026)</strong></div>
+        <div class="meta-box"><span>Technical Club</span><strong>Cyber Security & Coding Club</strong></div>
+        <div class="meta-box"><span>Language Used</span><strong style="color:#22c55e;">C Language (Standard C99)</strong></div>
+        <div class="meta-box"><span>Core Focus</span><strong>Rule-Based Security Triage</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: ABSTRACT -->
+  <div class="slide-container" id="slide-2">
+    <div class="slide-badge">SECTION 2</div>
+    <div class="slide-title">Abstract - Project Summary & Outcome</div>
+    <div class="two-col">
+      <div>
+        <div style="margin-bottom:16px;">
+          <h4 style="color:#38bdf8; margin-bottom:4px;">• Proposed Idea:</h4>
+          <p style="font-size:13.5px; color:#cbd5e1; line-height:1.5;">Build a lightweight, offline desktop scanner in pure C to detect fake phishing emails without requiring heavy cloud AI models or external Python libraries.</p>
+        </div>
+        <div style="margin-bottom:16px;">
+          <h4 style="color:#38bdf8; margin-bottom:4px;">• Problem Addressed:</h4>
+          <p style="font-size:13.5px; color:#cbd5e1; line-height:1.5;">Attackers deceive students and non-technical users using lookalike domains (<code>paypa1</code>), artificial urgency (<code>account suspended</code>), and raw IP links (<code>192.168.x.x</code>).</p>
+        </div>
+        <div>
+          <h4 style="color:#38bdf8; margin-bottom:4px;">• Expected Outcome:</h4>
+          <p style="font-size:13.5px; color:#cbd5e1; line-height:1.5;">An automated scanner that calculates an accurate Risk Score (0–100), outputs immediate verdicts (SAFE or CRITICAL), and guides users with prevention advice.</p>
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <img src="images/phishing_flow.png" style="max-width:100%; border-radius:10px; border:1px solid #334155; margin-bottom:8px;">
+        <p style="font-size:12px; color:#94a3b8;"><i>Figure 1: High-level attack and defense workflow.</i></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: PROBLEM STATEMENT -->
+  <div class="slide-container" id="slide-3">
+    <div class="slide-badge">SECTION 3</div>
+    <div class="slide-title">Problem Statement - Why This Project Matters</div>
+    <div class="three-col">
+      <div class="col-card" style="border-top: 4px solid #ef4444;">
+        <h3 style="color:#f87171;">What Problem?</h3>
+        <p>Cyber adversaries exploit human psychology rather than software bugs.</p>
+        <p>They create fake emails that visually mimic real banks, universities, or services to manipulate users into surrendering passwords and credit cards.</p>
+      </div>
+      <div class="col-card" style="border-top: 4px solid #38bdf8;">
+        <h3 style="color:#38bdf8;">Who Faces It?</h3>
+        <ul style="padding-left:18px;">
+          <li><b>College Students:</b> Targeted with fake scholarships, exams, or campus jobs.</li>
+          <li><b>Non-Tech Users:</b> Unable to spot tiny spelling tricks like <code>paypa1.com</code>.</li>
+          <li><b>College Labs:</b> Lack expensive enterprise security gateways.</li>
+        </ul>
+      </div>
+      <div class="col-card" style="border-top: 4px solid #22c55e;">
+        <h3 style="color:#4ade80;">Why It Matters?</h3>
+        <ul style="padding-left:18px;">
+          <li><b>Financial Loss:</b> Accounts drained in minutes.</li>
+          <li><b>Credential Theft:</b> University accounts compromised.</li>
+          <li><b>Awareness:</b> A simple C tool teaches students how phishing works internally.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: LITERATURE SURVEY -->
+  <div class="slide-container" id="slide-4">
+    <div class="slide-badge">SECTION 4</div>
+    <div class="slide-title">Literature Survey (5 to 6 Papers Analyzed)</div>
+    <div class="paper-grid">
+      <div class="paper-box">
+        <strong>Paper 1: Bergholz et al. (2010)</strong> - Model-Based NLP & Markov Chains<br>
+        <span style="color:#94a3b8;">Solution:</span> Statistical text analysis of deceptive phrasing.<br>
+        <div class="lim"><b>Limitation:</b> High computation; fails on short/image-only emails.</div>
+      </div>
+      <div class="paper-box">
+        <strong>Paper 2: Basnet et al. (2012)</strong> - Machine Learning (SVM, Naive Bayes)<br>
+        <span style="color:#94a3b8;">Solution:</span> Trained ML models on 16 email structural features.<br>
+        <div class="lim"><b>Limitation:</b> Complex black-box; vulnerable to evasion tricks.</div>
+      </div>
+      <div class="paper-box">
+        <strong>Paper 3: Sheng et al. (2009)</strong> - URL Blacklists (PhishTank, Google)<br>
+        <span style="color:#94a3b8;">Solution:</span> Database of known malicious links.<br>
+        <div class="lim"><b>Limitation:</b> Zero protection on fresh links (4-12 hr delay).</div>
+      </div>
+      <div class="paper-box">
+        <strong>Paper 4: Almomani et al. (2013)</strong> - Email Filtering Survey (SPF/DKIM)<br>
+        <span style="color:#94a3b8;">Solution:</span> Cryptographic DNS authentication checks.<br>
+        <div class="lim"><b>Limitation:</b> Display Name spoofing still bypasses basic SPF.</div>
+      </div>
+      <div class="paper-box base">
+        <strong>Paper 5 [BASE PAPER]: Fette et al. (2007)</strong> - PILFER Framework<br>
+        <span style="color:#94a3b8;">Solution:</span> Structural feature extraction (IP links, forms, HTML).<br>
+        <div class="lim"><b>Limitation:</b> False alarms on legitimate newsletters with many links.</div>
+      </div>
+      <div class="paper-box">
+        <strong>Paper 6: Marchal et al. (2016)</strong> - Lexical Brand Target Matching<br>
+        <span style="color:#94a3b8;">Solution:</span> Brand name vs registered domain comparison.<br>
+        <div class="lim"><b>Limitation:</b> Heavy browser extension latency & DB lookups.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: VISUAL EXAMPLE -->
+  <div class="slide-container" id="slide-5">
+    <div class="slide-badge">VISUAL BREAKDOWN</div>
+    <div class="slide-title">Visual Anatomy of a Phishing Email</div>
+    <div class="two-col">
+      <div>
+        <img src="images/email_breakdown.png" style="width:100%; border-radius:10px; border:1px solid #334155; margin-bottom:12px;">
+        <img src="images/score_meter.png" style="width:100%; border-radius:8px; border:1px solid #334155;">
+      </div>
+      <div style="background:#1e293b; padding:20px; border-radius:10px; border:1px solid #334155;">
+        <h4 style="color:#38bdf8; margin-bottom:12px;">The 4 Core Security Checks in C:</h4>
+        <p style="font-size:13px; margin-bottom:8px;"><b>1. Lookalike Sender (+35 pts):</b> Flags deceptive spellings like <code>paypa1.com</code>.</p>
+        <p style="font-size:13px; margin-bottom:8px;"><b>2. Panic Subject (+25 pts):</b> Flags urgency words like <i>"URGENT"</i> or <i>"Suspended"</i>.</p>
+        <p style="font-size:13px; margin-bottom:8px;"><b>3. Raw IP Link (+25 pts):</b> Real companies don't use raw IPs (<code>192.168.1.50</code>).</p>
+        <p style="font-size:13px; margin-bottom:8px;"><b>4. Credential Demand (+30 pts):</b> Asking for passwords, OTPs, or credit cards.</p>
+        <hr style="border-color:#334155; margin:12px 0;">
+        <p style="font-size:12.5px; color:#4ade80;"><b>Verdict:</b> Total score $\ge 50$ triggers [CRITICAL PHISHING ALERT]!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: PROPOSED WORK -->
+  <div class="slide-container" id="slide-6">
+    <div class="slide-badge">SECTION 5</div>
+    <div class="slide-title">Proposed Work (Base Paper & C Implementation)</div>
+    <div class="two-col">
+      <div>
+        <div style="background:#1e293b; padding:16px; border-radius:8px; border-left:4px solid #22c55e; margin-bottom:14px;">
+          <h4 style="color:#4ade80; font-size:14px;">Base Paper:</h4>
+          <p style="font-size:12.5px; color:#cbd5e1;"><b>Fette et al. (2007)</b> - <i>"Learning to Detect Phishing Emails"</i> (PILFER), IEEE / ACM WWW.</p>
+        </div>
+        <h4 style="color:#38bdf8; margin-bottom:8px; font-size:14px;">How We Adapted It in Beginner C:</h4>
+        <ul style="font-size:13px; color:#cbd5e1; line-height:1.6; padding-left:18px;">
+          <li>Converted heavy formulas into <b>4 simple if-else string rules</b>.</li>
+          <li>Uses standard beginner C functions: <code>fgets()</code>, <code>strstr()</code>, <code>tolower()</code>.</li>
+          <li>Zero setup or external dependencies; runs natively on GCC / VS Code.</li>
+        </ul>
+      </div>
+      <div>
+        <pre><code>// simple_phishguard.c (Student C Code)
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char sender[100], subject[150], body[500];
+    int score = 0;
+
+    // CHECK 1: Fake Sender (paypa1, .xyz)
+    if (strstr(sender, "paypa1")) score += 35;
+
+    // CHECK 2: Panic Subject (urgent, suspended)
+    if (strstr(subject, "urgent")) score += 25;
+
+    // CHECK 3: Raw IP Link (http://192.)
+    if (strstr(body, "http://192.")) score += 25;
+
+    // CHECK 4: Credential Demand (password, card)
+    if (strstr(body, "password")) score += 30;
+
+    if (score >= 50) printf("CRITICAL PHISHING!");
+    else printf("SAFE EMAIL");
+    return 0;
+}</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: REFERENCES -->
+  <div class="slide-container" id="slide-7">
+    <div class="slide-badge">SECTION 6</div>
+    <div class="slide-title">References (Academic Papers & Standards)</div>
+    <div style="background:#1e293b; padding:20px; border-radius:10px; border:1px solid #334155; font-size:12px; line-height:1.7; color:#cbd5e1;">
+      <p><b style="color:#38bdf8;">[1] BASE PAPER:</b> I. Fette, N. Sadeh, and A. Tomasic, "Learning to Detect Phishing Emails," in <i>Proc. 16th Int. Conf. on World Wide Web (WWW '07)</i>, pp. 649–656, 2007.</p>
+      <p><b>[2]</b> S. Marchal, J. Francois, R. State, and T. Engel, "Know Your Phish: Novel Content-Based Phishing Detection of Crafty Phishing Webpages," <i>IEEE Trans. Computers</i>, vol. 65, no. 8, pp. 2401–2414, 2016.</p>
+      <p><b>[3]</b> A. Almomani, B. B. Gupta, S. Atawneh, A. Meulenberg, and E. Almomani, "A Survey of Phishing Email Filtering Techniques," <i>IEEE Comm. Surveys & Tutorials</i>, vol. 15, no. 4, pp. 2070–2090, 2013.</p>
+      <p><b>[4]</b> R. Basnet, S. Mukkamala, and A. H. Sung, "Detection of Phishing Attacks: A Machine Learning Approach," in <i>Studies in Fuzziness and Soft Computing</i>, Springer, pp. 373–383, 2012.</p>
+      <p><b>[5]</b> S. Sheng, B. Wardman, G. Warner, et al., "An Empirical Analysis of Phishing Blacklists," in <i>Proc. 6th Conf. on Email and Anti-Spam (CEAS '09)</i>, 2009.</p>
+      <p><b>[6]</b> E. Bergholz, J. Chang-Paauwe, et al., "Improved Phishing Detection using Model-Based Features and Classifiers," <i>Cyberpsychology & Behavior</i>, vol. 13, no. 2, pp. 135–142, 2010.</p>
+      <p><b>[7]</b> ISO/IEC 9899:1999 (C99 Standard Specification), ANSI C Standard Library (stdio.h, string.h, ctype.h).</p>
+    </div>
+  </div>
+
+  <!-- NAVIGATION BUTTONS -->
+  <div class="nav-bar">
+    <button class="nav-btn" id="prevBtn" onclick="prevSlide()">◀ Previous</button>
+    <span class="page-num" id="slideNum">Slide 1 of 7</span>
+    <button class="nav-btn" id="nextBtn" onclick="nextSlide()">Next ▶</button>
+  </div>
+  <div class="fullscreen-tip">Tip: Press <kbd style="background:#334155; padding:2px 6px; border-radius:4px;">F11</kbd> in your browser for Full-Screen Presentation Mode | Use Arrow Keys ◀ ▶ to navigate</div>
+
+<script>
+  let currentSlide = 1;
+  const totalSlides = 7;
+
+  function showSlide(num) {
+    for (let i = 1; i <= totalSlides; i++) {
+      document.getElementById('slide-' + i).classList.remove('active');
+    }
+    document.getElementById('slide-' + num).classList.add('active');
+    document.getElementById('slideNum').innerText = `Slide ${num} of ${totalSlides}`;
+    document.getElementById('prevBtn').disabled = (num === 1);
+    document.getElementById('nextBtn').disabled = (num === totalSlides);
+  }
+
+  function nextSlide() {
+    if (currentSlide < totalSlides) {
+      currentSlide++;
+      showSlide(currentSlide);
+    }
+  }
+
+  function prevSlide() {
+    if (currentSlide > 1) {
+      currentSlide--;
+      showSlide(currentSlide);
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+
+  showSlide(currentSlide);
+</script>
+</body>
+</html>

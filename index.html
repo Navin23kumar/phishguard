@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PhishGuard Web Simulator - APEX CIPHER</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  body { background: #090d16; color: #f8fafc; padding: 24px; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; }
+  .container { width: 100%; max-width: 1100px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; }
+  
+  /* Cards */
+  .card { background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 22px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+  .card-header { border-bottom: 1px solid #334155; padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+  .badge { background: #2563eb; color: white; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: bold; }
+  
+  /* Form Elements */
+  label { font-size: 12px; font-weight: 600; color: #94a3b8; display: block; margin-bottom: 6px; }
+  input[type="text"], textarea { width: 100%; background: #1e293b; border: 1px solid #475569; border-radius: 8px; padding: 10px 12px; color: white; font-size: 13px; margin-bottom: 14px; outline: none; }
+  input[type="text"]:focus, textarea:focus { border-color: #38bdf8; }
+  textarea { resize: vertical; height: 90px; }
+  
+  /* Quick sample buttons */
+  .sample-btns { display: flex; gap: 8px; margin-bottom: 14px; }
+  .btn-sample { background: #1e293b; border: 1px solid #475569; color: #cbd5e1; padding: 6px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; transition: 0.2s; }
+  .btn-sample:hover { background: #334155; border-color: #38bdf8; color: white; }
+
+  /* Primary Button */
+  .btn-scan { width: 100%; background: #2563eb; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+  .btn-scan:hover { background: #1d4ed8; }
+
+  /* Output Terminal / Console */
+  .terminal { background: #020617; border: 1px solid #1e293b; border-radius: 8px; padding: 16px; font-family: 'Consolas', monospace; font-size: 12px; min-height: 240px; color: #38bdf8; line-height: 1.6; white-space: pre-wrap; margin-bottom: 14px; }
+  .term-alert { color: #f87171; font-weight: bold; }
+  .term-safe { color: #4ade80; font-weight: bold; }
+  .term-warn { color: #facc15; font-weight: bold; }
+
+  /* Verdict Banner */
+  .verdict-box { border-radius: 8px; padding: 14px; text-align: center; font-weight: bold; font-size: 14px; display: none; }
+  .verdict-danger { background: #450a0a; border: 1px solid #dc2626; color: #fca5a5; }
+  .verdict-safe { background: #052e16; border: 1px solid #16a34a; color: #86efac; }
+  .verdict-suspicious { background: #422006; border: 1px solid #d97706; color: #fde68a; }
+
+  /* C Code Preview Card */
+  .code-preview { margin-top: 16px; background: #020617; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; font-family: 'Consolas', monospace; font-size: 11px; color: #94a3b8; max-height: 140px; overflow-y: auto; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  
+  <!-- LEFT PANEL: USER INPUT -->
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <h2 style="font-size:18px; color:#ffffff;">PhishGuard Input Form</h2>
+        <span style="font-size:11px; color:#94a3b8;">Testing `simple_phishguard.c` directly in the browser</span>
+      </div>
+      <span class="badge">Team: APEX CIPHER</span>
+    </div>
+
+    <!-- Quick Load Samples -->
+    <label>Load Instant Test Cases:</label>
+    <div class="sample-btns">
+      <button class="btn-sample" onclick="loadSample('paypal')">⚠️ PayPal Phishing</button>
+      <button class="btn-sample" onclick="loadSample('office')">⚠️ Office 365 Phishing</button>
+      <button class="btn-sample" onclick="loadSample('github')">✅ Clean GitHub Email</button>
+    </div>
+
+    <label for="sender">Sender Email Address (e.g. support@paypa1.com):</label>
+    <input type="text" id="sender" placeholder="support@paypa1.com">
+
+    <label for="subject">Email Subject Line:</label>
+    <input type="text" id="subject" placeholder="URGENT: Your account suspended!">
+
+    <label for="body">Email Message Body:</label>
+    <textarea id="body" placeholder="Someone logged in. Click here: http://192.168.1.50/login to enter your password."></textarea>
+
+    <button class="btn-scan" onclick="runPhishGuardInBrowser()">▶ Run PhishGuard Security Scanner</button>
+
+    <div class="code-preview">
+      <span style="color:#38bdf8;">// C Logic Running in Browser:</span><br>
+      if (strstr(sender, "paypa1") || strstr(sender, ".xyz")) score += 35;<br>
+      if (strstr(subject, "urgent") || strstr(subject, "suspended")) score += 25;<br>
+      if (strstr(body, "http://192.") || strstr(body, "click here")) score += 25;<br>
+      if (strstr(body, "password") || strstr(body, "credit card")) score += 30;
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL: TERMINAL OUTPUT & VERDICT -->
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <h2 style="font-size:18px; color:#ffffff;">Scanner Terminal & Results</h2>
+        <span style="font-size:11px; color:#94a3b8;">Real-time C Logic Execution Output</span>
+      </div>
+      <span class="badge" style="background:#10b981;">C Simulator Active</span>
+    </div>
+
+    <label>Standard Output (stdout):</label>
+    <div class="terminal" id="termOutput">====================================================
+   PhishGuard: Simple Fake Email Detector (C Lang)  
+   Created by Student Team: APEX CIPHER             
+====================================================
+
+Waiting for email inputs...
+Click "Run PhishGuard Security Scanner" or load a sample on the left.</div>
+
+    <div class="verdict-box" id="verdictBox"></div>
+  </div>
+
+</div>
+
+<script>
+  // Pre-configured Test Cases
+  const samples = {
+    paypal: {
+      sender: "PayPal Account Security <support@paypa1.com>",
+      subject: "URGENT: Your account suspended immediately!",
+      body: "Dear Customer, please verify your details. Click here: http://192.168.1.50/login and enter your credit card and password."
+    },
+    office: {
+      sender: "IT Helpdesk <admin@microsoft-update.xyz>",
+      subject: "Action Required: Microsoft 365 Account Blocked",
+      body: "Your mailbox is full. Click the link below within 24 hours to verify password: http://192.168.0.12/webmail"
+    },
+    github: {
+      sender: "GitHub Team <notifications@github.com>",
+      subject: "Your personal access token has expired",
+      body: "Hi developer, your token CI_TOKEN expired today. You can regenerate it on https://github.com/settings/tokens. Regards, GitHub Team."
+    }
+  };
+
+  function loadSample(key) {
+    document.getElementById('sender').value = samples[key].sender;
+    document.getElementById('subject').value = samples[key].subject;
+    document.getElementById('body').value = samples[key].body;
+    runPhishGuardInBrowser();
+  }
+
+  // Exact JavaScript implementation mirroring simple_phishguard.c
+  function runPhishGuardInBrowser() {
+    let sender = document.getElementById('sender').value.toLowerCase();
+    let subject = document.getElementById('subject').value.toLowerCase();
+    let body = document.getElementById('body').value.toLowerCase();
+
+    let score = 0;
+    let logs = [];
+
+    logs.push("====================================================");
+    logs.push("   PhishGuard: Simple Fake Email Detector (C Lang)  ");
+    logs.push("   Created by Student Team: APEX CIPHER             ");
+    logs.push("====================================================\n");
+
+    logs.push("Scanning Email Security Indicators...");
+
+    // CHECK 1: Fake / Lookalike Sender Domain (Typosquatting)
+    if (sender.includes("paypa1") || sender.includes("micr0soft") || 
+        sender.includes("g00gle") || sender.includes(".xyz") || sender.includes(".top")) {
+      logs.push("[!] WARNING: Suspicious/Fake sender address found! (+35 points)");
+      score += 35;
+    }
+
+    // CHECK 2: Urgent words in Subject Line
+    if (subject.includes("urgent") || subject.includes("suspended") || 
+        subject.includes("blocked") || subject.includes("action required")) {
+      logs.push("[!] WARNING: Panic/Urgent subject detected! (+25 points)");
+      score += 25;
+    }
+
+    // CHECK 3: Fake links or raw IP addresses
+    if (body.includes("http://192.") || body.includes("http://10.") || 
+        body.includes("click here") || body.includes("login-verify")) {
+      logs.push("[!] WARNING: Dangerous or unsecure web link detected! (+25 points)");
+      score += 25;
+    }
+
+    // CHECK 4: Asking for personal / secret data
+    if (body.includes("password") || body.includes("credit card") || 
+        body.includes("otp") || body.includes("bank account")) {
+      logs.push("[!] WARNING: Asking for sensitive personal/banking data! (+30 points)");
+      score += 30;
+    }
+
+    if (score === 0) {
+      logs.push("[✓] No suspicious indicators triggered. All checks clean!");
+    }
+
+    if (score > 100) score = 100;
+
+    logs.push("\n====================================================");
+    logs.push(`Total Threat Score: ${score} / 100`);
+
+    let vBox = document.getElementById('verdictBox');
+    vBox.style.display = "block";
+
+    if (score >= 50) {
+      logs.push("FINAL VERDICT: [DANGEROUS PHISHING EMAIL!]");
+      logs.push("ADVICE       : Do NOT click links or reply! Delete or report it.");
+      vBox.className = "verdict-box verdict-danger";
+      vBox.innerHTML = `🚨 FINAL VERDICT: DANGEROUS PHISHING EMAIL! (Score: ${score}/100)<br><small style="font-weight:normal;">Do NOT click any links. High probability of credential theft!</small>`;
+    } else if (score >= 20) {
+      logs.push("FINAL VERDICT: [SUSPICIOUS EMAIL]");
+      logs.push("ADVICE       : Be careful! Verify sender before opening.");
+      vBox.className = "verdict-box verdict-suspicious";
+      vBox.innerHTML = `⚠️ FINAL VERDICT: SUSPICIOUS EMAIL (Score: ${score}/100)<br><small style="font-weight:normal;">Caution advised. Verify sender identity through an out-of-band channel.</small>`;
+    } else {
+      logs.push("FINAL VERDICT: [SAFE EMAIL]");
+      logs.push("ADVICE       : No major phishing signs found. Looks clean.");
+      vBox.className = "verdict-box verdict-safe";
+      vBox.innerHTML = `✅ FINAL VERDICT: SAFE EMAIL (Score: ${score}/100)<br><small style="font-weight:normal;">No red flags detected. Email appears authentic.</small>`;
+    }
+    logs.push("====================================================");
+
+    document.getElementById('termOutput').innerText = logs.join("\n");
+  }
+
+  // Run automatically on initial load with sample
+  window.onload = function() {
+    loadSample('paypal');
+  };
+</script>
+
+</body>
+</html>

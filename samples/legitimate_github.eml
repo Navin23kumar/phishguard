@@ -1,0 +1,16 @@
+From: "GitHub" <noreply@github.com>
+Reply-To: noreply@github.com
+Return-Path: <noreply@github.com>
+Subject: [GitHub] A personal access token has expired
+Date: Wed, 28 Oct 2026 09:15:00 +0000
+Authentication-Results: mx.google.com; spf=pass; dkim=pass; dmarc=pass
+
+Hi Developer,
+
+Your personal access token "CI_DEPLOY_KEY" has expired on October 28, 2026.
+
+You can generate a new token or review your active tokens in your account settings:
+https://github.com/settings/tokens
+
+Thanks,
+The GitHub Team

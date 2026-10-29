@@ -1,0 +1,16 @@
+From: "IT Helpdesk Support" <admin-notify@corporate-update.top>
+Reply-To: credential-logger@gmail.com
+Return-Path: <bounce@corporate-update.top>
+Subject: Action Required: Confirm your identity for Microsoft 365 migration
+Date: Wed, 28 Oct 2026 11:00:00 +0000
+Authentication-Results: spf=fail; dkim=fail; dmarc=fail
+
+Dear Employee,
+
+Our IT administration is migrating all employee email mailboxes to Microsoft 365 cloud servers.
+Please click the link below within 24 hours to preserve your existing emails and credentials:
+http://microsoft.com.account-auth.top/login
+
+Kindly update your credentials immediately to avoid system lockout.
+
+Corporate IT Services
