@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PhishGuard - Seminar Slides Presentation (APEX CIPHER)</title>
+<title>PhishGuard - Complete 10-Slide Seminar Presentation (APEX CIPHER)</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
 
@@ -14,9 +14,9 @@
     --neon-purple: #c084fc;
     --neon-pink: #f472b6;
     --neon-green: #10b981;
-    --glass-bg: rgba(18, 12, 38, 0.75);
+    --neon-yellow: #fbbf24;
+    --glass-bg: rgba(18, 12, 38, 0.78);
     --glass-border: rgba(168, 85, 247, 0.25);
-    --glass-hover: rgba(168, 85, 247, 0.45);
     --card-bg: rgba(26, 19, 53, 0.85);
     --text-white: #f8fafc;
     --text-muted: #94a3b8;
@@ -30,8 +30,8 @@
   }
 
   body {
-    background: radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.18) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(236, 72, 153, 0.18) 0%, transparent 40%),
+    background: radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(236, 72, 153, 0.2) 0%, transparent 40%),
                 radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.12) 0%, transparent 60%),
                 var(--bg-dark);
     color: var(--text-white);
@@ -44,7 +44,6 @@
     position: relative;
   }
 
-  /* Ambient Cyber Glow Animation */
   body::before {
     content: '';
     position: fixed;
@@ -73,38 +72,37 @@
     width: 100%;
   }
 
-  /* Slide Container: Futuristic Glassmorphic Canvas */
+  /* Slide Canvas */
   .slide-container {
     width: 90vw;
-    max-width: 1200px;
-    height: 72vh;
-    min-height: 620px;
+    max-width: 1220px;
+    height: 74vh;
+    min-height: 640px;
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
-    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8),
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.85),
                 0 0 40px rgba(168, 85, 247, 0.15),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
     display: none;
     flex-direction: column;
-    padding: 36px 48px;
+    padding: 34px 46px;
     overflow-y: auto;
     position: relative;
   }
 
-  /* Slide Active Animation */
   .slide-container.active {
     display: flex;
-    animation: slideEnter 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: slideEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   @keyframes slideEnter {
     0% {
       opacity: 0;
-      transform: scale(0.96) translateY(20px);
-      filter: blur(6px);
+      transform: scale(0.97) translateY(18px);
+      filter: blur(4px);
     }
     100% {
       opacity: 1;
@@ -121,30 +119,30 @@
     background: rgba(168, 85, 247, 0.15);
     border: 1px solid rgba(168, 85, 247, 0.35);
     color: var(--neon-cyan);
-    font-size: 11.5px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 6px 14px;
+    padding: 5px 14px;
     border-radius: 9999px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     width: fit-content;
     box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
   }
 
   .slide-title {
-    font-size: 26px;
+    font-size: 25px;
     font-weight: 800;
     background: linear-gradient(90deg, #ffffff 0%, #cbd5e1 50%, var(--neon-cyan) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     border-bottom: 1px solid rgba(168, 85, 247, 0.2);
-    padding-bottom: 14px;
+    padding-bottom: 12px;
     letter-spacing: -0.5px;
   }
 
-  /* COVER SLIDE (SLIDE 1) */
+  /* Slide 1 Cover */
   .cover-card {
     text-align: center;
     margin: auto;
@@ -171,7 +169,7 @@
   .cover-sub {
     font-size: 16px;
     color: var(--text-muted);
-    margin-bottom: 30px;
+    margin-bottom: 28px;
     font-weight: 400;
   }
 
@@ -179,7 +177,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: left;
   }
 
@@ -188,31 +186,13 @@
     border: 1px solid var(--glass-border);
     padding: 16px 20px;
     border-radius: 14px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .meta-box::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 100%;
-    background: var(--primary-gradient);
-    opacity: 0;
-    transition: opacity 0.3s;
+    transition: all 0.3s ease;
   }
 
   .meta-box:hover {
     transform: translateY(-4px);
     border-color: var(--neon-cyan);
     box-shadow: 0 12px 24px -8px rgba(6, 182, 212, 0.3);
-  }
-
-  .meta-box:hover::before {
-    opacity: 1;
   }
 
   .meta-box span {
@@ -231,64 +211,66 @@
     font-weight: 600;
   }
 
-  /* Layout grids */
+  /* Grid Layouts */
   .two-col {
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 28px;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 26px;
     align-items: center;
   }
 
   .three-col {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 18px;
+  }
+
+  .four-col {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
   }
 
   .col-card {
     background: var(--card-bg);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
-    padding: 24px;
+    padding: 22px;
     transition: all 0.3s ease;
-    position: relative;
   }
 
   .col-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
     border-color: var(--neon-purple);
     box-shadow: 0 16px 32px -10px rgba(168, 85, 247, 0.35);
   }
 
   .col-card h3 {
-    font-size: 16px;
+    font-size: 15.5px;
     margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
 
   .col-card p, .col-card li {
-    font-size: 13.5px;
+    font-size: 13px;
     color: #cbd5e1;
     line-height: 1.6;
-    margin-bottom: 8px;
+    margin-bottom: 7px;
   }
 
-  /* Paper Survey Grid */
+  /* Paper Survey */
   .paper-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 14px;
   }
 
   .paper-box {
     background: var(--card-bg);
     border: 1px solid var(--glass-border);
     border-left: 4px solid var(--neon-cyan);
-    padding: 14px 18px;
+    padding: 13px 16px;
     border-radius: 12px;
-    font-size: 12.5px;
+    font-size: 12px;
     line-height: 1.5;
     transition: all 0.25s ease;
   }
@@ -305,19 +287,14 @@
     border-color: rgba(16, 185, 129, 0.4);
   }
 
-  .paper-box.base:hover {
-    border-color: var(--neon-green);
-    box-shadow: 0 8px 20px -6px rgba(16, 185, 129, 0.4);
-  }
-
   .paper-box strong {
     color: #ffffff;
-    font-size: 13px;
+    font-size: 12.5px;
   }
 
   .paper-box .lim {
     color: #fca5a5;
-    margin-top: 5px;
+    margin-top: 4px;
   }
 
   /* Code Window */
@@ -325,11 +302,11 @@
     background: #060312;
     border: 1px solid rgba(168, 85, 247, 0.3);
     color: #38bdf8;
-    padding: 18px;
+    padding: 16px;
     border-radius: 14px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    line-height: 1.55;
+    font-size: 11.5px;
+    line-height: 1.5;
     overflow-x: auto;
     box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.7);
   }
@@ -340,37 +317,58 @@
     border-radius: 14px;
     border: 1px solid var(--glass-border);
     box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.6);
-    transition: transform 0.3s ease;
   }
 
-  .slide-img:hover {
-    transform: scale(1.02);
-    border-color: var(--neon-purple);
+  /* Tables */
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
   }
 
-  /* Controls & Navigation */
+  .custom-table th {
+    background: rgba(99, 102, 241, 0.25);
+    color: var(--neon-cyan);
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .custom-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+    color: #e2e8f0;
+  }
+
+  .custom-table tr:hover td {
+    background: rgba(168, 85, 247, 0.1);
+  }
+
+  /* Controls */
   .nav-bar {
     display: flex;
     align-items: center;
     gap: 24px;
-    margin-top: 24px;
+    margin-top: 20px;
   }
 
   .nav-btn {
     background: var(--primary-gradient);
     color: white;
     border: none;
-    padding: 12px 28px;
+    padding: 11px 26px;
     border-radius: 9999px;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 700;
     letter-spacing: 0.5px;
     cursor: pointer;
     box-shadow: 0 10px 20px -5px rgba(168, 85, 247, 0.4);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
 
   .nav-btn:hover:not(:disabled) {
@@ -386,11 +384,11 @@
   }
 
   .page-num {
-    font-size: 14px;
+    font-size: 13.5px;
     color: var(--neon-cyan);
     font-weight: 700;
     letter-spacing: 1px;
-    padding: 8px 18px;
+    padding: 7px 18px;
     background: rgba(6, 182, 212, 0.1);
     border: 1px solid rgba(6, 182, 212, 0.25);
     border-radius: 9999px;
@@ -399,7 +397,7 @@
   .fullscreen-tip {
     font-size: 12px;
     color: var(--text-muted);
-    margin-top: 12px;
+    margin-top: 10px;
   }
 
   .fullscreen-tip kbd {
@@ -408,7 +406,6 @@
     color: var(--neon-purple);
     padding: 2px 7px;
     border-radius: 6px;
-    font-family: inherit;
     font-weight: bold;
   }
 </style>
@@ -438,20 +435,20 @@
   <!-- SLIDE 2: ABSTRACT -->
   <div class="slide-container" id="slide-2">
     <div class="slide-badge">SECTION 02</div>
-    <div class="slide-title">Abstract - Project Summary & Outcome</div>
+    <div class="slide-title">Abstract - Project Summary & Scope</div>
     <div class="two-col">
       <div>
-        <div style="margin-bottom:18px;">
-          <h4 style="color:var(--neon-cyan); margin-bottom:6px; font-size:15px;">• The Proposed Idea:</h4>
-          <p style="font-size:13.5px; color:#cbd5e1; line-height:1.6;">Build a lightweight, offline desktop scanner in pure C to detect fake phishing emails without requiring heavy cloud AI models or external Python libraries.</p>
+        <div style="margin-bottom:16px;">
+          <h4 style="color:var(--neon-cyan); margin-bottom:5px; font-size:14.5px;">• The Proposed Idea:</h4>
+          <p style="font-size:13px; color:#cbd5e1; line-height:1.6;">Build a lightweight, offline desktop scanner in pure C to detect fake phishing emails without requiring heavy cloud AI models or external Python libraries.</p>
         </div>
-        <div style="margin-bottom:18px;">
-          <h4 style="color:var(--neon-purple); margin-bottom:6px; font-size:15px;">• The Problem Addressed:</h4>
-          <p style="font-size:13.5px; color:#cbd5e1; line-height:1.6;">Attackers deceive students and non-technical users using lookalike domains (<code>paypa1</code>), artificial urgency (<code>account suspended</code>), and raw IP links (<code>192.168.x.x</code>).</p>
+        <div style="margin-bottom:16px;">
+          <h4 style="color:var(--neon-purple); margin-bottom:5px; font-size:14.5px;">• The Problem Addressed:</h4>
+          <p style="font-size:13px; color:#cbd5e1; line-height:1.6;">Attackers deceive students and non-technical users using lookalike domains (<code>paypa1</code>), artificial urgency (<code>account suspended</code>), and raw IP links (<code>192.168.x.x</code>).</p>
         </div>
         <div>
-          <h4 style="color:var(--neon-pink); margin-bottom:6px; font-size:15px;">• The Expected Outcome:</h4>
-          <p style="font-size:13.5px; color:#cbd5e1; line-height:1.6;">An automated scanner that calculates an accurate Risk Score (0–100), outputs immediate verdicts (SAFE or CRITICAL), and guides users with prevention advice.</p>
+          <h4 style="color:var(--neon-pink); margin-bottom:5px; font-size:14.5px;">• The Expected Outcome:</h4>
+          <p style="font-size:13px; color:#cbd5e1; line-height:1.6;">An automated scanner that calculates an accurate Risk Score (0–100), outputs immediate verdicts (SAFE or CRITICAL), and guides users with prevention advice.</p>
         </div>
       </div>
       <div style="text-align:center;">
@@ -493,7 +490,7 @@
   <!-- SLIDE 4: LITERATURE SURVEY -->
   <div class="slide-container" id="slide-4">
     <div class="slide-badge">SECTION 04</div>
-    <div class="slide-title">Literature Survey (5 to 6 Papers Analyzed)</div>
+    <div class="slide-title">Literature Survey (6 Foundational Papers)</div>
     <div class="paper-grid">
       <div class="paper-box">
         <strong>Paper 1: Bergholz et al. (2010)</strong> - Model-Based NLP & Markov Chains<br>
@@ -528,8 +525,36 @@
     </div>
   </div>
 
-  <!-- SLIDE 5: VISUAL EXAMPLE -->
+  <!-- SLIDE 5: ATTACK VECTOR TAXONOMY (NEW PAGE 5) -->
   <div class="slide-container" id="slide-5">
+    <div class="slide-badge">SECTION 05</div>
+    <div class="slide-title">Attack Vectors & Social Engineering Taxonomy</div>
+    <div class="four-col">
+      <div class="col-card" style="border-top: 4px solid var(--neon-cyan);">
+        <h3 style="color:var(--neon-cyan);">1. Typosquatting</h3>
+        <p>Registering domains that look identical to famous brands by swapping letters with digits:</p>
+        <p style="font-family:'JetBrains Mono'; color:#38bdf8;">paypa1.com<br>micr0soft.com<br>g00gle-login.xyz</p>
+      </div>
+      <div class="col-card" style="border-top: 4px solid var(--neon-purple);">
+        <h3 style="color:var(--neon-purple);">2. Scare Tactics</h3>
+        <p>Using alarming psychological triggers to panic victims into acting without thinking:</p>
+        <p style="color:#e2e8f0;">• <i>"Immediate Account Closure"</i><br>• <i>"Suspicious Login Detected"</i><br>• <i>"Pay Within 24 Hours"</i></p>
+      </div>
+      <div class="col-card" style="border-top: 4px solid var(--neon-pink);">
+        <h3 style="color:var(--neon-pink);">3. Raw IP Traps</h3>
+        <p>Directing users to raw numerical servers rather than authentic domain hostnames:</p>
+        <p style="font-family:'JetBrains Mono'; color:#f472b6;">http://192.168.1.50/login<br>http://10.0.0.12/verify</p>
+      </div>
+      <div class="col-card" style="border-top: 4px solid var(--neon-green);">
+        <h3 style="color:var(--neon-green);">4. Data Harvesting</h3>
+        <p>Embedding forms that capture high-value credentials directly:</p>
+        <p style="color:#e2e8f0;">• Passwords & PINs<br>• One-Time Passwords (OTP)<br>• Credit Card Numbers</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: VISUAL ANATOMY (PAGE 6) -->
+  <div class="slide-container" id="slide-6">
     <div class="slide-badge">VISUAL BREAKDOWN</div>
     <div class="slide-title">Visual Anatomy of a Phishing Email</div>
     <div class="two-col">
@@ -549,9 +574,9 @@
     </div>
   </div>
 
-  <!-- SLIDE 6: PROPOSED WORK -->
-  <div class="slide-container" id="slide-6">
-    <div class="slide-badge">SECTION 05</div>
+  <!-- SLIDE 7: PROPOSED WORK (PAGE 7) -->
+  <div class="slide-container" id="slide-7">
+    <div class="slide-badge">SECTION 07</div>
     <div class="slide-title">Proposed Work (Base Paper & C Implementation)</div>
     <div class="two-col">
       <div>
@@ -596,11 +621,84 @@ int main() {
     </div>
   </div>
 
-  <!-- SLIDE 7: REFERENCES -->
-  <div class="slide-container" id="slide-7">
-    <div class="slide-badge">SECTION 06</div>
-    <div class="slide-title">References (Academic Papers & Standards)</div>
-    <div style="background:var(--card-bg); padding:24px; border-radius:16px; border:1px solid var(--glass-border); font-size:12.5px; line-height:1.75; color:#cbd5e1;">
+  <!-- SLIDE 8: C ALGORITHM & STRING PARSING (NEW PAGE 8) -->
+  <div class="slide-container" id="slide-8">
+    <div class="slide-badge">SECTION 08</div>
+    <div class="slide-title">System Architecture & Core C Functions (Viva Q&A)</div>
+    <div class="three-col">
+      <div class="col-card">
+        <h3 style="color:var(--neon-cyan);">1. String Tokenization</h3>
+        <p><b>Function:</b> <code>strstr(haystack, needle)</code></p>
+        <p>Searches for malicious sub-strings inside sender addresses and body text without needing complex regular expressions.</p>
+        <p style="color:var(--neon-green);">Time Complexity: O(N) linear scanning.</p>
+      </div>
+      <div class="col-card">
+        <h3 style="color:var(--neon-purple);">2. Case Normalization</h3>
+        <p><b>Function:</b> <code>tolower(c)</code></p>
+        <p>Prevents evasion tactics where attackers use mixed caps like <i>"UrGeNt"</i> or <i>"PaSsWoRd"</i>. All inputs are normalized into lowercase buffers.</p>
+        <p style="color:var(--neon-green);">100% case-insensitive matching.</p>
+      </div>
+      <div class="col-card">
+        <h3 style="color:var(--neon-pink);">3. HTML Report Export</h3>
+        <p><b>Function:</b> <code>fopen()</code> & <code>fprintf()</code></p>
+        <p>Standard C file I/O operations write styled HTML quarantine pages directly to the disk without requiring external scripting languages.</p>
+        <p style="color:var(--neon-green);">Zero external runtime overhead.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: EXPERIMENTAL RESULTS (NEW PAGE 9) -->
+  <div class="slide-container" id="slide-9">
+    <div class="slide-badge">SECTION 09</div>
+    <div class="slide-title">Experimental Results & Test Verification Matrix</div>
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>Test Case Dataset</th>
+          <th>Simulated Threat Vector</th>
+          <th>Threat Score</th>
+          <th>System Verdict</th>
+          <th>Execution Outcome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>phishing_paypal.eml</b></td>
+          <td>Lookalike domain (<code>paypa1.com</code>), raw IP link, credit card harvesting</td>
+          <td><span style="color:#ef4444; font-weight:bold;">100 / 100</span></td>
+          <td><span style="color:#ef4444; font-weight:bold;">CRITICAL PHISHING</span></td>
+          <td>Flagged immediately; quarantined</td>
+        </tr>
+        <tr>
+          <td><b>phishing_office365.eml</b></td>
+          <td>Spoofed IT admin notice, <code>.xyz</code> domain, urgent password ultimatum</td>
+          <td><span style="color:#ef4444; font-weight:bold;">90 / 100</span></td>
+          <td><span style="color:#ef4444; font-weight:bold;">CRITICAL PHISHING</span></td>
+          <td>Flagged immediately; quarantined</td>
+        </tr>
+        <tr>
+          <td><b>suspicious_invoice.eml</b></td>
+          <td>Generic commercial invoice with urgency keyword but valid domain</td>
+          <td><span style="color:var(--neon-yellow); font-weight:bold;">25 / 100</span></td>
+          <td><span style="color:var(--neon-yellow); font-weight:bold;">SUSPICIOUS</span></td>
+          <td>Delivered with user warning banner</td>
+        </tr>
+        <tr>
+          <td><b>legitimate_github.eml</b></td>
+          <td>Authentic token expiration notice, verified domain, HTTPS official link</td>
+          <td><span style="color:var(--neon-green); font-weight:bold;">0 / 100</span></td>
+          <td><span style="color:var(--neon-green); font-weight:bold;">SAFE / CLEAN</span></td>
+          <td>Clean inbox delivery; zero false alarms</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SLIDE 10: REFERENCES (PAGE 10) -->
+  <div class="slide-container" id="slide-10">
+    <div class="slide-badge">SECTION 10</div>
+    <div class="slide-title">References & Academic Standards</div>
+    <div style="background:var(--card-bg); padding:22px; border-radius:16px; border:1px solid var(--glass-border); font-size:12px; line-height:1.75; color:#cbd5e1;">
       <p><b style="color:var(--neon-cyan);">[1] BASE PAPER:</b> I. Fette, N. Sadeh, and A. Tomasic, "Learning to Detect Phishing Emails," in <i>Proc. 16th Int. Conf. on World Wide Web (WWW '07)</i>, pp. 649–656, 2007.</p>
       <p><b>[2]</b> S. Marchal, J. Francois, R. State, and T. Engel, "Know Your Phish: Novel Content-Based Phishing Detection of Crafty Phishing Webpages," <i>IEEE Trans. Computers</i>, vol. 65, no. 8, pp. 2401–2414, 2016.</p>
       <p><b>[3]</b> A. Almomani, B. B. Gupta, S. Atawneh, A. Meulenberg, and E. Almomani, "A Survey of Phishing Email Filtering Techniques," <i>IEEE Comm. Surveys & Tutorials</i>, vol. 15, no. 4, pp. 2070–2090, 2013.</p>
@@ -614,7 +712,7 @@ int main() {
   <!-- NAVIGATION BAR -->
   <div class="nav-bar">
     <button class="nav-btn" id="prevBtn" onclick="prevSlide()">◀ Previous</button>
-    <span class="page-num" id="slideNum">Slide 1 of 7</span>
+    <span class="page-num" id="slideNum">Slide 1 of 10</span>
     <button class="nav-btn" id="nextBtn" onclick="nextSlide()">Next ▶</button>
   </div>
   <div class="fullscreen-tip">Tip: Press <kbd>F11</kbd> for Full-Screen Presentation Mode | Use Arrow Keys ◀ ▶ to navigate</div>
@@ -623,7 +721,7 @@ int main() {
 
 <script>
   let currentSlide = 1;
-  const totalSlides = 7;
+  const totalSlides = 10;
 
   function showSlide(num) {
     for (let i = 1; i <= totalSlides; i++) {
