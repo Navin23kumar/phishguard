@@ -43,7 +43,7 @@ void generate_html_report(const char *sender, const char *subject, const char *b
 
     fprintf(fp, "<div class=\"card\">\n");
     fprintf(fp, "  <div class=\"header\">\n");
-    fprintf(fp, "    <div><div class=\"title\">🛡️ PhishGuard Email Security Triage</div><small style=\"color:#94a3b8;\">Team: APEX CIPHER (1st Year CSE)</small></div>\n");
+    fprintf(fp, "    <div><div class=\"title\">🛡️ PhishGuard Email Security Triage</div><small style=\"color:#94a3b8;\">Team: APEX CIPHER (1st Year B.E CSE)</small></div>\n");
     fprintf(fp, "    <div class=\"badge\">%s (Score: %d/100)</div>\n", verdict_text, score);
     fprintf(fp, "  </div>\n");
 

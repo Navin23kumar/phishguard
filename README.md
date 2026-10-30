@@ -1,5 +1,5 @@
 # PhishGuard: Phishing Email Detection & Threat Triage Engine
-**Author / Security Team:** APEX CIPHER (1st Year CSE)  
+**Author / Security Team:** APEX CIPHER (1st Year B.E CSE)  
 **Domain:** Cyber Security | Fake Email Detection & Threat Triage  
 **Technologies Used:** Pure C Language (C99 Standard) & HTML/CSS/JavaScript  
 **Zero Python:** This project is built 100% using native C and modern HTML.
